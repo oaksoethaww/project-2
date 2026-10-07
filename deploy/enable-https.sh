@@ -5,7 +5,7 @@ if [[ ${CERTBOT_AGREE_TOS:-} != yes ]]; then
   echo "Confirm the Let's Encrypt subscriber agreement before running: CERTBOT_AGREE_TOS=yes"
   exit 1
 fi
-cert_email=${1:?Provide your Let's Encrypt contact email}
+cert_email=${1:?"Provide your Let's Encrypt contact email"}
 project_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$project_dir"
 mkdir -p nginx/certbot/conf nginx/certbot/www .deployment

@@ -38,3 +38,7 @@ After the DNS/base-path update, both production builds passed. Local HTTP checks
 ## Azure Docker validation
 
 Both Docker images built successfully on the Ubuntu 24.04 VM. Three Compose services started; the backend container is healthy. Nginx runtime syntax validation passed. Public HTTP frontend/deep-link, API health, unauthenticated workout rejection, invalid registration validation, and CORS preflight checks passed. After adding the VM IP to Atlas, the VM MongoDB connection and ping passed, and all 35 API integration checks passed against the public deployment. Test data was removed. TLS remains pending email and subscriber-agreement authorization. See DEPLOYMENT.md.
+
+## HTTPS validation
+
+A trusted Let’s Encrypt certificate was issued and activated. Public HTTPS frontend, deep-link, and backend health requests passed; HTTP redirects to HTTPS with status 308. All 35 API integration checks passed over HTTPS and test data was removed. Renewal is scheduled twice daily through root cron.

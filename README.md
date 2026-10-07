@@ -172,9 +172,9 @@ Routing:
 - `/backend/` → Next.js, with the prefix preserved; `/backend/api/workouts` reaches Next.js at `/backend/api/workouts`.
 - `/.well-known/acme-challenge/` → the future Certbot webroot.
 
-Ports 80 and 443 are mapped. HTTP works with the supplied configuration; **HTTPS remains inactive until a real domain and certificates are configured**. Certificate directories are mounted and ignored by Git. Follow [nginx/HTTPS.md](nginx/HTTPS.md) for the later DNS, Certbot, TLS, and renewal steps. The supplied DNS hostname is configured. Azure HTTP deployment is complete; TLS certificates remain pending.
+Ports 80 and 443 are mapped. HTTP works with the supplied configuration; **HTTPS remains inactive until a real domain and certificates are configured**. Certificate directories are mounted and ignored by Git. Follow [nginx/HTTPS.md](nginx/HTTPS.md) for the later DNS, Certbot, TLS, and renewal steps. The supplied DNS hostname is configured. Azure HTTP deployment is complete; HTTPS is now enabled with Let’s Encrypt.
 
-Docker remains unavailable on the local development computer. Docker Engine and Compose have now been installed on the Azure VM; both images built successfully, all three containers started, and Nginx/public HTTP route checks passed. See [DEPLOYMENT.md](DEPLOYMENT.md) for successful database/API checks and pending HTTPS activation.
+Docker remains unavailable on the local development computer. Docker Engine and Compose have now been installed on the Azure VM; both images built successfully, all three containers started, and Nginx/public HTTP route checks passed. See [DEPLOYMENT.md](DEPLOYMENT.md) for successful database/API checks and HTTPS status.
 
 References: [Next.js standalone output](https://nextjs.org/docs/app/api-reference/config/next-config-js/output), [Nginx proxy URI behavior](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
 
@@ -184,4 +184,4 @@ Production hostname: `ogk-gym-tracker.koreacentral.cloudapp.azure.com`. Nginx an
 
 Use the root `.env` for Compose runtime secrets, separately from the backend local-development `.env`. Set `FRONTEND_URL=http://ogk-gym-tracker.koreacentral.cloudapp.azure.com` initially, then change it to `https://ogk-gym-tracker.koreacentral.cloudapp.azure.com` after installing TLS certificates. The frontend build argument remains `/backend/api`. Add the VM’s public outgoing IP to the MongoDB Atlas access list before running the backend on the VM.
 
-The source has been pushed to GitHub and cloned onto the VM. Both images have been built and Compose is running. Certificate issuance is pending contact email and subscriber-agreement authorization.
+The source has been pushed to GitHub and cloned onto the VM. Both images have been built and Compose is running. HTTPS has been activated with Let’s Encrypt; renewal is scheduled twice daily.

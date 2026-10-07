@@ -12,3 +12,7 @@ For `ogk-gym-tracker.koreacentral.cloudapp.azure.com`:
 6. Configure automatic Certbot renewal and reload Nginx after renewal. Keep certificate private keys out of source control.
 
 Azure HTTP deployment is complete. Certificate issuance remains pending a contact email and authorization to accept the Let’s Encrypt subscriber agreement. The prepared `deploy/enable-https.sh` automates certificate issuance, configuration activation, and renewal scheduling; see DEPLOYMENT.md.
+
+## Current deployment
+
+HTTPS is now active on `ogk-gym-tracker.koreacentral.cloudapp.azure.com`. The VM selects `nginx/https.conf` through `NGINX_CONFIG` in its private root environment. HTTP redirects to HTTPS and certificate renewal is scheduled twice daily. The HTTP-only configuration remains available for bootstrapping a new deployment.

@@ -14,7 +14,7 @@ The public HTTP frontend, a React deep link, backend health endpoint, authentica
 
 ## Pending
 
-The VM's MongoDB connection timed out. Add `40.82.129.5` to the Atlas IP access list and repeat the connection test. Until this passes, registration, login, and workout persistence on the VM are not verified.
+After the VM IP was added to Atlas, the MongoDB connection and ping succeeded. All 35 real API integration checks passed against the deployed app, including registration, password hashing in Atlas, login, JWT validation, workout CRUD, CORS, and user isolation. Test accounts and workouts were cleaned up.
 
 HTTPS certificate issuance and activation require a Let's Encrypt contact email and subscriber-agreement authorization. Port 443 is mapped, but the current HTTP-only Nginx configuration does not serve TLS.
 

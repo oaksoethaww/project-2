@@ -172,9 +172,9 @@ Routing:
 - `/backend/` → Next.js, with the prefix preserved; `/backend/api/workouts` reaches Next.js at `/backend/api/workouts`.
 - `/.well-known/acme-challenge/` → the future Certbot webroot.
 
-Ports 80 and 443 are mapped. HTTP works with the supplied configuration; **HTTPS remains inactive until a real domain and certificates are configured**. Certificate directories are mounted and ignored by Git. Follow [nginx/HTTPS.md](nginx/HTTPS.md) for the later DNS, Certbot, TLS, and renewal steps. The supplied DNS hostname is configured. No Azure deployment or certificates have been created.
+Ports 80 and 443 are mapped. HTTP works with the supplied configuration; **HTTPS remains inactive until a real domain and certificates are configured**. Certificate directories are mounted and ignored by Git. Follow [nginx/HTTPS.md](nginx/HTTPS.md) for the later DNS, Certbot, TLS, and renewal steps. The supplied DNS hostname is configured. Azure HTTP deployment is complete; TLS certificates remain pending.
 
-Docker remains unavailable on the local development computer. Docker Engine and Compose have now been installed on the Azure VM; both images built successfully, all three containers started, and Nginx/public HTTP route checks passed. See [DEPLOYMENT.md](DEPLOYMENT.md) for current database and HTTPS status.
+Docker remains unavailable on the local development computer. Docker Engine and Compose have now been installed on the Azure VM; both images built successfully, all three containers started, and Nginx/public HTTP route checks passed. See [DEPLOYMENT.md](DEPLOYMENT.md) for successful database/API checks and pending HTTPS activation.
 
 References: [Next.js standalone output](https://nextjs.org/docs/app/api-reference/config/next-config-js/output), [Nginx proxy URI behavior](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
 

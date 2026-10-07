@@ -37,4 +37,4 @@ After the DNS/base-path update, both production builds passed. Local HTTP checks
 
 ## Azure Docker validation
 
-Both Docker images built successfully on the Ubuntu 24.04 VM. Three Compose services started; the backend container is healthy. Nginx runtime syntax validation passed. Public HTTP frontend/deep-link, API health, unauthenticated workout rejection, invalid registration validation, and CORS preflight checks passed. The VM MongoDB connection timed out; deployed database-backed flows and TLS remain pending. See DEPLOYMENT.md.
+Both Docker images built successfully on the Ubuntu 24.04 VM. Three Compose services started; the backend container is healthy. Nginx runtime syntax validation passed. Public HTTP frontend/deep-link, API health, unauthenticated workout rejection, invalid registration validation, and CORS preflight checks passed. After adding the VM IP to Atlas, the VM MongoDB connection and ping passed, and all 35 API integration checks passed against the public deployment. Test data was removed. TLS remains pending email and subscriber-agreement authorization. See DEPLOYMENT.md.

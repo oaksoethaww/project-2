@@ -11,4 +11,4 @@ For `ogk-gym-tracker.koreacentral.cloudapp.azure.com`:
 5. Set `FRONTEND_URL` in the root `.env` to the exact HTTPS origin. Use the same-origin frontend build argument `/backend/api`.
 6. Configure automatic Certbot renewal and reload Nginx after renewal. Keep certificate private keys out of source control.
 
-Azure deployment and certificate issuance are not performed by this project.
+Azure HTTP deployment is complete. Certificate issuance remains pending a contact email and authorization to accept the Let’s Encrypt subscriber agreement. The prepared `deploy/enable-https.sh` automates certificate issuance, configuration activation, and renewal scheduling; see DEPLOYMENT.md.

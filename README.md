@@ -174,7 +174,7 @@ Routing:
 
 Ports 80 and 443 are mapped. HTTP works with the supplied configuration; **HTTPS remains inactive until a real domain and certificates are configured**. Certificate directories are mounted and ignored by Git. Follow [nginx/HTTPS.md](nginx/HTTPS.md) for the later DNS, Certbot, TLS, and renewal steps. The supplied DNS hostname is configured. No Azure deployment or certificates have been created.
 
-Docker is not installed in the development environment, so image builds and container/reverse-proxy startup have not been executed. Configuration is prepared for review, not claimed as container-tested.
+Docker remains unavailable on the local development computer. Docker Engine and Compose have now been installed on the Azure VM; both images built successfully, all three containers started, and Nginx/public HTTP route checks passed. See [DEPLOYMENT.md](DEPLOYMENT.md) for current database and HTTPS status.
 
 References: [Next.js standalone output](https://nextjs.org/docs/app/api-reference/config/next-config-js/output), [Nginx proxy URI behavior](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
 
@@ -184,4 +184,4 @@ Production hostname: `ogk-gym-tracker.koreacentral.cloudapp.azure.com`. Nginx an
 
 Use the root `.env` for Compose runtime secrets, separately from the backend local-development `.env`. Set `FRONTEND_URL=http://ogk-gym-tracker.koreacentral.cloudapp.azure.com` initially, then change it to `https://ogk-gym-tracker.koreacentral.cloudapp.azure.com` after installing TLS certificates. The frontend build argument remains `/backend/api`. Add the VM’s public outgoing IP to the MongoDB Atlas access list before running the backend on the VM.
 
-Cloning onto the VM, building Docker images, running Compose, and issuing certificates have not been performed.
+The source has been pushed to GitHub and cloned onto the VM. Both images have been built and Compose is running. Certificate issuance is pending contact email and subscriber-agreement authorization.

@@ -34,3 +34,7 @@ The path `o.html` was not changed. It was absent at the start of this continuati
 The DNS hostname has been configured and Next.js now uses `/backend` as its base path. The original full application integration results above predate this route-prefix change; current build and route checks are documented separately below.
 
 After the DNS/base-path update, both production builds passed. Local HTTP checks confirmed `/backend/api/health` returns 200, `/backend/api/workouts` without authentication returns 401, and the old `/api/health` returns 404. The updated Vite `/backend` proxy also returned the backend health response successfully. Docker/VM/TLS checks remain pending.
+
+## Azure Docker validation
+
+Both Docker images built successfully on the Ubuntu 24.04 VM. Three Compose services started; the backend container is healthy. Nginx runtime syntax validation passed. Public HTTP frontend/deep-link, API health, unauthenticated workout rejection, invalid registration validation, and CORS preflight checks passed. The VM MongoDB connection timed out; deployed database-backed flows and TLS remain pending. See DEPLOYMENT.md.

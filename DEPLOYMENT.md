@@ -1,0 +1,52 @@
+# Azure deployment — October 7, 2026
+
+- Repository: https://github.com/oaksoethaww/project-2
+- VM: `ogk-gym-tracker.koreacentral.cloudapp.azure.com`
+- SSH user: `azureuser`
+- Project directory on VM: `/home/azureuser/project-2`
+- VM public outgoing IP: `40.82.129.5`
+
+## Completed
+
+The source was pushed to GitHub without secrets and cloned to the VM. Docker Engine and the Compose plugin were installed from Docker's official Ubuntu repository. Both Docker images built successfully. The frontend, backend, and reverse-proxy containers started; the backend health check passed. Nginx configuration validation passed.
+
+The public HTTP frontend, a React deep link, backend health endpoint, authentication rejection, invalid registration validation, and allowed-origin preflight were checked. Production frontend assets use `/backend/api`.
+
+## Pending
+
+The VM's MongoDB connection timed out. Add `40.82.129.5` to the Atlas IP access list and repeat the connection test. Until this passes, registration, login, and workout persistence on the VM are not verified.
+
+HTTPS certificate issuance and activation require a Let's Encrypt contact email and subscriber-agreement authorization. Port 443 is mapped, but the current HTTP-only Nginx configuration does not serve TLS.
+
+## Operations
+
+Connect using your original SSH key, then run:
+
+```sh
+cd /home/azureuser/project-2
+sudo docker compose ps
+sudo docker compose logs --tail=100 backend nginx
+```
+
+After pushing source changes, update and rebuild:
+
+```sh
+cd /home/azureuser/project-2
+git pull --ff-only
+sudo docker compose up --build -d
+```
+
+The VM's private root `.env` contains runtime secrets and has mode 600. It is excluded from Git and Docker build contexts. Do not print it in screenshots or logs. The SSH key is not stored on the VM or committed to GitHub.
+
+## Enable HTTPS after authorization
+
+With HTTP reachable, and after agreeing to the Let's Encrypt subscriber agreement, use your real email:
+
+```sh
+cd /home/azureuser/project-2
+sudo env CERTBOT_AGREE_TOS=yes bash deploy/enable-https.sh YOUR_EMAIL_ADDRESS
+```
+
+The script issues a certificate through the existing HTTP challenge webroot, selects `nginx/https.conf` through `NGINX_CONFIG`, changes `FRONTEND_URL` to HTTPS, recreates the backend and proxy containers, and validates Nginx. It installs a root cron entry to run `deploy/renew-certificates.sh` twice daily using the VM's timezone. Renewal uses Certbot and reloads Nginx afterward. Certificate keys and renewal logs remain ignored by Git.
+
+The public app URL after TLS activation will be https://ogk-gym-tracker.koreacentral.cloudapp.azure.com.

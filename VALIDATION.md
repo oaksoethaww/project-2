@@ -42,3 +42,5 @@ Both Docker images built successfully on the Ubuntu 24.04 VM. Three Compose serv
 ## HTTPS validation
 
 A trusted Let’s Encrypt certificate was issued and activated. Public HTTPS frontend, deep-link, and backend health requests passed; HTTP redirects to HTTPS with status 308. All 35 API integration checks passed over HTTPS and test data was removed. Renewal is scheduled twice daily through root cron.
+
+Certbot renewal dry run completed successfully against the staging service. The scheduled root cron entry was verified.

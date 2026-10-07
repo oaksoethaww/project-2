@@ -50,3 +50,5 @@ sudo env CERTBOT_AGREE_TOS=yes bash deploy/enable-https.sh YOUR_EMAIL_ADDRESS
 The script issues a certificate through the existing HTTP challenge webroot, selects `nginx/https.conf` through `NGINX_CONFIG`, changes `FRONTEND_URL` to HTTPS, recreates the backend and proxy containers, and validates Nginx. It installs a root cron entry to run `deploy/renew-certificates.sh` twice daily using the VM's timezone. Renewal uses Certbot and reloads Nginx afterward. Certificate keys and renewal logs remain ignored by Git.
 
 The public app URL is https://ogk-gym-tracker.koreacentral.cloudapp.azure.com.
+
+Certbot renewal dry run completed successfully against the staging service. The scheduled root cron entry was verified.

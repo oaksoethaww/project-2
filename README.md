@@ -1,3 +1,6 @@
+#Group Member
+Oak Soe Thaw (6726138)
+
 # Gym Workout Tracker
 
 A university project with a React + Vite frontend and a Next.js API backend. MongoDB stores users and workouts through Mongoose. Passwords are hashed with bcryptjs; JWTs authenticate workout requests.
